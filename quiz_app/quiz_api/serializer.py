@@ -29,8 +29,8 @@ class SubjectPostSerializer(serializers.ModelSerializer):
         fields = ['subject_name','time_duration']
 
     def validate(self, attrs):
-
         get_subject_obj = Subject.objects.filter(subject_name__iexact=attrs.get('subject_name')).exists()
+        
         if get_subject_obj:
             raise serializers.ValidationError({"subject_name":"This Subject is already Added"})
         return attrs

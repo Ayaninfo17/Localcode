@@ -42,11 +42,9 @@ class UserLoginView(APIView):
         try:
             get_username = request.POST.get('username',None)
             get_password = request.POST.get('password',None)
-            print(get_password)
-            print(get_username)
 
             authenticate_user = authenticate(username=get_username, password=get_password)
-            print(authenticate_user,17)
+            
             if authenticate_user is not None:
                 login(request,authenticate_user)
                 context = {
